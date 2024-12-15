@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float speed;
     private Rigidbody2D body;
 
     private void Awake()    // Runs once when the scene is loaded
@@ -13,6 +15,6 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()   // Runs once every frame
     {
-        body.linearVelocity = new Vector2(Input.GetAxis("Horizontal"), body.linearVelocityY);
+        body.linearVelocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.linearVelocityY);
     }
 }
