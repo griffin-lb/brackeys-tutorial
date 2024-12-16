@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         body.linearVelocity = new Vector2(body.linearVelocityX, speed);
+        animator.SetTrigger("isJumping");
         isGrounded = false;
     }
 
