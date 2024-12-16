@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Set Animator parameters
+        animator.SetFloat("yVelocity", body.linearVelocityY);
         animator.SetBool("isRunning", horizontalInput != 0);    // As long as horizontal value is not 0 (standing still) isRunning = true
         animator.SetBool("isGrounded", isGrounded);
     }
