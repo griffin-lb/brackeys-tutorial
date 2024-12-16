@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -6,57 +5,66 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask wallLayer;
     public float speed;
+    public float jumpPower;
     private Rigidbody2D body;
     private Animator animator;
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
     private bool wallSliding = false;
-    
 
-    private void Awake()    // Runs once when the scene is loaded
+    private void Awake()
     {
-        // Grab references for Rigidbody & Animator from game objects in Unity
-        body = GetComponent<Rigidbody2D>(); // Check player object for Rigidbody component & store it inside the body variable
+        body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Detect when player presses left or right and move body in that direction
-    
-    private void Update()   // Runs once every frame
+    private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        // Flip player
-        if(horizontalInput > 0.01f)
+        // Flip player based on input
+        if (horizontalInput > 0.01f)
             transform.localScale = Vector3.one;
-        else if(horizontalInput < -0.01f)
-        transform.localScale = new UnityEngine.Vector3 (-1, 1, 1);
+        else if (horizontalInput < -0.01f)
+            transform.localScale = new Vector3(-1, 1, 1);
 
         // Set Animator parameters
-        animator.SetFloat("yVelocity", body.linearVelocityY);
-        animator.SetBool("isRunning", horizontalInput != 0);    // As long as horizontal value is not 0 (standing still) isRunning = true
+        animator.SetFloat("yVelocity", body.linearVelocity.y);
         animator.SetBool("isGrounded", isGrounded());
 
-        // Wall jump logic
-        if (wallJumpCooldown < 0.2f)
+        // Wall slide logic
+        if (wallJumpCooldown > 0.2f)
         {
-             // If Space is pressed & player is grounded, maintain velocity on X axis & apply velocity of "speed" variable to the Y axis
-            if(Input.GetKey(KeyCode.Space) && isGrounded())
+            // Regular jump
+            if (Input.GetKey(KeyCode.Space) && isGrounded())
             {
                 Jump();
             }
 
-            body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocityY);   // left & right movement
+            body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y); // Handle left & right movement
 
+            // Wall sliding
             if (isWallSliding() && !isGrounded())
             {
                 if (!wallSliding)
                 {
                     wallSliding = true;
-                    body.gravityScale = 0.2f;
-                    body.linearVelocity = Vector2.zero;
-                    animator.SetBool("isWallSliding", true); // Start wall sliding
+                    body.gravityScale = 0.2f; // Slow down gravity for wall sliding
+                    body.linearVelocity = new Vector2(0, body.linearVelocity.y); // Stop horizontal movement
+                    animator.SetBool("isWallSliding", true); // Set animation to wall slide
+                    animator.SetBool("isRunning", false); // Ensure "isRunning" is false during wall slide
+                }
+
+                // Wall jump
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    wallJumpCooldown = 0; // Reset cooldown on wall jump
+                    body.linearVelocity = new Vector2(-Mathf.Sign(transform.localScale.x) * speed * 1.5f, jumpPower); // Apply velocity for wall jump
+                    wallSliding = false; // Stop wall sliding after jump
+                    body.gravityScale = 2f; // Restore gravity
+                    animator.SetTrigger("isWallJumping"); // Set wall jump animation
+                    animator.SetBool("isWallSliding", false); // Stop wall slide animation
                 }
             }
             else
@@ -64,23 +72,31 @@ public class PlayerMovement : MonoBehaviour
                 if (wallSliding)
                 {
                     wallSliding = false;
-                    body.gravityScale = 1;
-                    animator.SetBool("isWallSliding", false); // Exit wall sliding
+                    body.gravityScale = 2f;
+                    animator.SetBool("isWallSliding", false); // Exit wall sliding if not sliding anymore
+                }
+
+                // Ensure player stops running animation when they are not moving
+                if (Mathf.Abs(horizontalInput) > 0.01f && !isWallSliding())
+                {
+                    animator.SetBool("isRunning", true);
+                }
+                else
+                {
+                    animator.SetBool("isRunning", false);
                 }
             }
         }
-        else wallJumpCooldown += Time.deltaTime;
+        else
+        {
+            wallJumpCooldown += Time.deltaTime;
+        }
     }
 
     private void Jump()
     {
-        body.linearVelocity = new Vector2(body.linearVelocityX, speed);
-        animator.SetTrigger("isJumping");
-    }
-
-    // OnCollisionEnter2D = whenever a 2D object with a Rigidbody touches another 2D object with a Rigidbody
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+        body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower); // Apply upward force for regular jump
+        animator.SetTrigger("isJumping"); // Trigger jumping animation
     }
 
     private bool isGrounded()
@@ -91,7 +107,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isWallSliding()
     {
+        float horizontalInput = Input.GetAxis("Horizontal");
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
-        return raycastHit.collider != null;
+        return raycastHit.collider != null && horizontalInput != 0 && Mathf.Sign(horizontalInput) == Mathf.Sign(transform.localScale.x);
     }
 }
