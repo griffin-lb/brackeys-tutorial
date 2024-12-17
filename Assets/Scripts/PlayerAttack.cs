@@ -1,9 +1,12 @@
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     [SerializeField] private float attackCoolDown;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject[] projectiles;
     private Animator animator;
     private PlayerMovement playerMovement;
     private float cooldownTimer = Mathf.Infinity;
@@ -28,5 +31,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         animator.SetTrigger("attack");
         cooldownTimer = 0;
+
+        projectiles[findProjectile()].transform.position = firePoint.position;     // Take one of the projectiles and set it's position to the firePoint position
+        projectiles[findProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));     // Get Projectile component and send it in the direction that the player is facing
+    }
+
+    private int findProjectile()
+    {
+        for (int i = 0; i < projectiles.Length; i++)
+        {
+            if (!projectiles[i].activeInHierarchy)
+                return i;
+        }
+        return 0;
     }
 }
