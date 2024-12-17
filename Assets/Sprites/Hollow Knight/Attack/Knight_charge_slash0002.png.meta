@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 4b8510548be7144fc8a5fe4a1ab299a0
+guid: 94f9913cff9dc4403aa1a3a54678407e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 593253266158325138
-    second: Knight_wall_slide0001_0
+      213: -6512201564082281451
+    second: Knight_charge_slash0002_0
+  - first:
+      213: -8013828276518945919
+    second: Knight_charge_slash0002_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knight_wall_slide0001_0
+      name: Knight_charge_slash0002_0
       rect:
         serializedVersion: 2
-        x: 143
-        y: 1
-        width: 81
-        height: 133
+        x: 155
+        y: 122
+        width: 12
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29d053fc3b8ab3800800000000000000
-      internalID: 593253266158325138
+      spriteID: 514e12b3e2300a5a0800000000000000
+      internalID: -6512201564082281451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_charge_slash0002_1
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1
+        width: 116
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b7b1f34a929c090800000000000000
+      internalID: -8013828276518945919
       vertices: []
       indices: 
       edges: []
@@ -147,8 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Knight_wall_slide0001_0: 593253266158325138
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

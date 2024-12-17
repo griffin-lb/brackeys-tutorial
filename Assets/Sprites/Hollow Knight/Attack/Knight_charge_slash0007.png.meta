@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 4b8510548be7144fc8a5fe4a1ab299a0
+guid: 54e3384e0a9ef489d89f038e2d081c21
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 593253266158325138
-    second: Knight_wall_slide0001_0
+      213: -5167732645251320485
+    second: Knight_charge_slash0007_0
+  - first:
+      213: 8021392084282015190
+    second: Knight_charge_slash0007_1
+  - first:
+      213: -6726501984997174306
+    second: Knight_charge_slash0007_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knight_wall_slide0001_0
+      name: Knight_charge_slash0007_0
       rect:
         serializedVersion: 2
-        x: 143
-        y: 1
-        width: 81
-        height: 133
+        x: 116
+        y: 0
+        width: 89
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29d053fc3b8ab3800800000000000000
-      internalID: 593253266158325138
+      spriteID: b55fa99f9868848b0800000000000000
+      internalID: -5167732645251320485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_charge_slash0007_1
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 42
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dd72cbf995b15f60800000000000000
+      internalID: 8021392084282015190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Knight_charge_slash0007_2
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 32
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed3984b451aa6a2a0800000000000000
+      internalID: -6726501984997174306
       vertices: []
       indices: 
       edges: []
@@ -147,8 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Knight_wall_slide0001_0: 593253266158325138
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

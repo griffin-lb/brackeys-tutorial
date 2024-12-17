@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Knight_wall_slide0003_0: 8305648080541864663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

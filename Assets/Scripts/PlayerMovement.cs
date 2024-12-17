@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
     private bool wallSliding = false;
+    private int horizontalInput;
 
     private void Awake()
     {
@@ -110,5 +111,10 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null && horizontalInput != 0 && Mathf.Sign(horizontalInput) == Mathf.Sign(transform.localScale.x);
+    }
+
+    public bool canAttack()
+    {
+        return horizontalInput == 0 && isGrounded() && !isWallSliding();
     }
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4b8510548be7144fc8a5fe4a1ab299a0
+guid: 4c35dc65adc024142971b97f520c3a17
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 593253266158325138
-    second: Knight_wall_slide0001_0
+      213: -650260470594565094
+    second: Knight_charge_slash0003_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knight_wall_slide0001_0
+      name: Knight_charge_slash0003_0
       rect:
         serializedVersion: 2
-        x: 143
+        x: 61
         y: 1
-        width: 81
-        height: 133
+        width: 144
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29d053fc3b8ab3800800000000000000
-      internalID: 593253266158325138
+      spriteID: a1c8bb61c8fc9f6f0800000000000000
+      internalID: -650260470594565094
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Knight_wall_slide0001_0: 593253266158325138
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
