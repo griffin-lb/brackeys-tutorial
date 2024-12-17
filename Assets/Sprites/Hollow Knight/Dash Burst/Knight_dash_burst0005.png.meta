@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Knight_dash_burst0005_0: 3959334506729427388
+      Knight_dash_burst0005_1: -7351911859181184512
+      Knight_dash_burst0005_2: -1564471618498295140
+      Knight_dash_burst0005_3: 9101780649706216685
+      Knight_dash_burst0005_4: 172501599369310792
+      Knight_dash_burst0005_5: -1865045648340066753
+      Knight_dash_burst0005_6: -1239831303879034667
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

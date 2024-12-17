@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Knight_charge_slash0007_0: -5167732645251320485
+      Knight_charge_slash0007_1: 8021392084282015190
+      Knight_charge_slash0007_2: -6726501984997174306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
