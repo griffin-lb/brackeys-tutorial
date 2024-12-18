@@ -64,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
                     body.linearVelocity = new Vector2(-Mathf.Sign(transform.localScale.x) * speed * 1.5f, jumpPower); // Apply velocity for wall jump
                     wallSliding = false; // Stop wall sliding after jump
                     body.gravityScale = 2f; // Restore gravity
-                    animator.SetTrigger("isWallJumping"); // Set wall jump animation
                     animator.SetBool("isWallSliding", false); // Stop wall slide animation
                 }
             }
